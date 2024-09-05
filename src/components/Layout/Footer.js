@@ -1,12 +1,13 @@
 import React from 'react';
+import { Box, Text, Flex } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <footer className="bg-indigo-600">
-      <div className="container mx-auto text-center p-4">
-        <p className="text-white">&copy; 2024 Business Consulting Club. All rights reserved.</p>
-      </div>
-    </footer>
+    <Box bg="teal.500" width="100%" p={4}>
+      <Flex justify="center" maxWidth="1200px" mx="auto">
+        <Text color="white">© {new Date().getFullYear()} Business Consulting Club. All rights reserved.</Text>
+      </Flex>
+    </Box>
   );
 };
 
