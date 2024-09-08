@@ -7,6 +7,182 @@
   pointer-events: none;
 }
 
+@keyframes buttonExpand {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  25% {
+    transform: scale(0.25);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  75% {
+    transform: scale(0.75);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes buttonCollapse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(0.75);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  75% {
+    transform: scale(0.25);
+    opacity: 0.25;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+/* Keyframes for moving buttons out */
+@keyframes moveOut {
+  0% {
+    transform: scale(0) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.5) translate(-12.5px, -12.5px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1) translate(-25px, -25px);
+    opacity: 1;
+  }
+}
+@keyframes moveIn {
+  0% {
+    transform: scale(1) translate(-25px, -25px);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.5) translate(-12.5px, -12.5px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0) translate(0, 0);
+    opacity: 0;
+  }
+}
+
+.edge-ball {
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: #09315c;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.buttons-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  z-index: 9;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.button {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0);
+  position: absolute;
+  transition: all 0.2s ease;
+}
+
+.buttons-container.expanded {
+  opacity: 1;
+}
+
+.buttons-container.expanded .button {
+  animation: buttonExpand 0.3s ease-in-out forwards;
+}
+
+.buttons-container.expanded .button:nth-of-type(1) {
+  animation: moveOut 0.3s ease-in-out forwards;
+}
+
+.buttons-container.expanded .button:nth-of-type(2) {
+  animation: moveOut 0.3s ease-in-out forwards;
+}
+
+.buttons-container.expanded .button:nth-of-type(3) {
+  animation: moveOut 0.3s ease-in-out forwards;
+}
+
+.buttons-container.expanded .button:nth-of-type(4) {
+  animation: moveOut 0.3s ease-in-out forwards;
+}
+
+.buttons-container.expanded .button:nth-of-type(5) {
+  animation: moveOut 0.3s ease-in-out forwards;
+}
+
+.buttons-container.collapsed {
+  opacity: 0;
+}
+.buttons-container.collapsed .button {
+  animation: buttonCollapse 0.3s ease-in-out forwards;
+}
+
+.buttons-container.collapsed .button:nth-of-type(1) {
+  animation: moveIn 0.3s ease-in-out forwards;
+}
+
+.buttons-container.collapsed .button:nth-of-type(2) {
+  animation: moveIn 0.3s ease-in-out forwards;
+}
+
+.buttons-container.collapsed .button:nth-of-type(3) {
+  animation: moveIn 0.3s ease-in-out forwards;
+}
+
+.buttons-container.collapsed .button:nth-of-type(4) {
+  animation: moveIn 0.3s ease-in-out forwards;
+}
+
+.buttons-container.collapsed .button:nth-of-type(5) {
+  animation: moveIn 0.3s ease-in-out forwards;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -14,7 +190,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #001d3c;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +211,42 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for sliding in from the right */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(50px);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Sliding left and right classes */
+.slide-left {
+  animation: slideInFromLeft 0.35s ease-in-out forwards;
+}
+
+.slide-right {
+  animation: slideInFromRight 0.35s ease-in-out forwards;
+}
+
+/* Ensure that each TabPanel has relative positioning for proper animation */
+.tab-content {
+  position: relative;
 }

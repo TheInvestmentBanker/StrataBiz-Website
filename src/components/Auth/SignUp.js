@@ -9,6 +9,7 @@ import {
   VStack,
   FormErrorMessage,
 } from '@chakra-ui/react';
+import { useColorMode, useColorModeValue, Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 
 const SignUp = () => {
   const { register } = useContext(AuthContext);
@@ -17,6 +18,15 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+
+  const sectionBgColor = useColorModeValue('#f7f6f7', '#001d3c');
+  const textColor = useColorModeValue('#1a202c', '#f7f6f7');
+  const buttonBgColor = useColorModeValue('#073669', '#0d548e');
+  const buttonHoverColor = useColorModeValue('#001d3c', '#001d3c');
+  const cardBgColor = useColorModeValue('#ffffff', '#002b5d');
+  const borderColor = useColorModeValue('#f7f6f7', '#001d3c');
+  const shadowColor = useColorModeValue('md', 'dark-lg');
+  const linkColor = useColorModeValue('#003f92','Teal')
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -32,35 +42,35 @@ const SignUp = () => {
   };
 
   return (
-    <Box p={4}>
+    <Box p={4} bg={sectionBgColor}>
       <VStack spacing={4} align="stretch">
         <FormControl id="name" isInvalid={!!error}>
-          <FormLabel>Name</FormLabel>
-          <Input
+          <FormLabel color={textColor}>Name</FormLabel>
+          <Input color={textColor}
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </FormControl>
         <FormControl id="email" isInvalid={!!error}>
-          <FormLabel>Email address</FormLabel>
-          <Input
+          <FormLabel color={textColor}>Email address</FormLabel>
+          <Input color={textColor}
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </FormControl>
         <FormControl id="password" isInvalid={!!error}>
-          <FormLabel>Password</FormLabel>
-          <Input
+          <FormLabel color={textColor}>Password</FormLabel>
+          <Input color={textColor}
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </FormControl>
         <FormControl id="confirm-password" isInvalid={!!error}>
-          <FormLabel>Confirm Password</FormLabel>
-          <Input
+          <FormLabel color={textColor}>Confirm Password</FormLabel>
+          <Input color={textColor}
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}

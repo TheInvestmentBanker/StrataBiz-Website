@@ -1,0 +1,33 @@
+.bubble {
+    width: 20px;  /* Customize the bubble size */
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.1);  /* Semi-transparent color */
+    position: absolute;
+    bottom: -10px;
+    animation: rise 15s infinite;  /* Adjusted duration for a smoother effect */
+    animation-timing-function: linear;
+    filter: blur(2px);  /* Adds a slight blur effect */
+  }
+  
+  @keyframes rise {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-100vh) translateX(50vw);
+    }
+    100% {
+      transform: translateY(0) translateX(-50vw);
+    }
+  }
+  
+  .bubble:nth-child(even) {
+    width: 25px;  /* Slightly different size for variety */
+    height: 25px;
+    animation-duration: 12s;  /* Different speed for even bubbles */
+  }
+  
+  .bubble:nth-child(odd) {
+    animation-duration: 18s;  /* Different speed for odd bubbles */
+  }
+  
