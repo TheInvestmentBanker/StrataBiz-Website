@@ -18,7 +18,7 @@ function App() {
     <AuthProvider>
       <ChakraProvider theme={theme}>
         <Router>
-          <Header />
+          <Header position="sticky"/>
           <Box as="main" width="100%" minHeight="calc(100vh - 128px)" p={0}>
             <Routes>
               <Route path="/" element={<Home />} />

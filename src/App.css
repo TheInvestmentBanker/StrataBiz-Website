@@ -216,7 +216,7 @@
 
 @keyframes slideInFromLeft {
   0% {
-    transform: translateX(-50px);
+    transform: translateX(-100px);
     opacity: 0.25;
   }
   100% {
@@ -228,7 +228,7 @@
 /* Keyframes for sliding in from the right */
 @keyframes slideInFromRight {
   0% {
-    transform: translateX(50px);
+    transform: translateX(100px);
     opacity: 0.25;
   }
   100% {

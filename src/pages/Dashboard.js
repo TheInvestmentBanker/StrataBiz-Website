@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import SocialTabs from '../components/InstagramEmbed'; // adjust path based on your folder structure
-import {useColorModeValue} from '@chakra-ui/react'
+import {useColorModeValue, Heading} from '@chakra-ui/react'
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1 size="lg" mb={4} textAlign="center" color={textColor} align='center' size="2xl" p={5}>Reading Section</h1>
+      <Heading as="h1" size="lg" mb={4} textAlign="center" color={textColor} align='center' p={5}>Reading Section</Heading>
       <SocialTabs />
     </div>
   );

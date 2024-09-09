@@ -1,9 +1,17 @@
 import React from 'react';
 import { Box, Button, ChakraProvider, Container, Flex, Heading, Image, Stack, Text, VStack } from '@chakra-ui/react';
-import { useColorMode, useColorModeValue, Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import {useColorModeValue, Card, CardBody, CardFooter } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 import EventSection from './Events'; 
 import YImage from '../assets/Exhibition.jpg';
+import CImage from '../assets/Call.png'
+import RG from '../assets/Members/RG.png'
+import Aman from '../assets/Members/Aman.jpg'
+import Pal from '../assets/Members/Pal.jpg'
+import VRG from '../assets/Members/Vaibhav.jpg'
+import Avi from '../assets/Members/Avinash.png'
+import Sans from '../assets/Members/Sanskar.jpg'
+import Shreya from '../assets/Members/Shreya.jpg'
 
 const HomePage = () => {
   const sectionBgColor = useColorModeValue('#f7f6f7', '#001d3c');
@@ -38,7 +46,7 @@ const HomePage = () => {
               alt="Hero Image"
               borderRadius="lg"
               objectFit="cover"
-              maxW="400px"
+              style={{ width: "37%", maxHeight: "auto", display: "block" }}
             />
           </Stack>
         </Container>
@@ -54,13 +62,16 @@ const HomePage = () => {
           </Heading>
           <Flex wrap="wrap" justify="space-around" color={textColor}>
             {[
-              { title: 'Consulting', description: 'Expert advice to help you grow your business.' },
-              { title: 'Market Analysis', description: 'In-depth market analysis and insights.' },
-              { title: 'Financial Planning', description: 'Comprehensive financial planning services.' },
+              { title: 'Business Consulting', description: 'Offering Strategic advice to Businesses and Startups, helping them improve operations, enhance profitability, and drive growth through customized Business solutions.' },
+              { title: 'Market Research', description: 'Conducting thorough market research, competitor analysis, and consumer behavior studies to guide businesses in making informed strategic choices.' },
+              { title: 'Technological Solutions', description: 'Delivering tech-based innovations, such as software development, automation, and digital transformation, to optimize business processes and drive efficiency.' },
+              { title: 'Supply Chain Operations', description: 'Streamlining supply chain processes to improve efficiency, reduce costs, and enhance delivery performance through data-driven analysis and optimization techniques.' },
+              { title: 'Project Management', description: 'Offering guidance on planning, executing, and managing projects efficiently by employing best practices to ensure successful project completion within scope, time, and budget.'},
+              { title: 'Digital Marketing', description: 'Crafting and implementing digital marketing strategies, including SEO, social media marketing, and online advertising, to boost brand visibility and customer engagement.' },
             ].map((service, index) => (
               <Box
                 key={index}
-                maxW="sm"
+                maxW="xs"
                 borderWidth="px"
                 borderRadius="lg"
                 overflow="hidden"
@@ -70,6 +81,7 @@ const HomePage = () => {
                 textAlign="center"
                 boxShadow={shadowColor}
                 bg={cardBgColor}
+                style={{ maxWidth: "25%", height: "auto", display: "block" }}
               >
                 <Heading as="h3" size="lg" mb={4} color={textColor}>
                   {service.title}
@@ -83,27 +95,38 @@ const HomePage = () => {
     {/* dobara banaya */}
       <Box py={20} section id="Team" bg={sectionBgColor}> 
         <Container maxW="container.xl">
+        <Heading as="h2" size="xl" mb={10} textAlign="center" color={textColor}>
+            Our Team
+          </Heading>
           <Flex wrap="wrap" justify="space-around">
             {[
-              { title: 'Living room Sofa', description: 'This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces and for people who love a chic design with a sprinkle of vintage design.', 
-              imgurl:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'},
-              { title: 'Market Analysis', description: 'In-depth market analysis and insights.',
-              imgurl:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80' },
-              { title: 'Financial Planning', description: 'Comprehensive financial planning services.',
-              imgurl:'https://www.instagram.com/p/Cz9AN2AhwMM/?igsh=MTVvcXk5cWFrdGtheg==' },
+              { title: 'Rahul Gupta [RG]', description: 'Founder and Head of the Club. Talks about Science & Engineering, Astrophysics, Cultures & Languages, Banking and Finance, Business and Entrepreneurship and sometimes History and Politics, .', 
+              imgurl:RG},
+              { title: 'Aman', description: 'In-depth market analysis and insights.',
+              imgurl:Aman},
+              { title: 'Harsh', description: 'Comprehensive financial planning services.',
+              imgurl:Pal},
+              { title: 'Avinash', description: 'Comprehensive financial planning services.',
+              imgurl:Avi},
+              { title: 'Vaibhav Raj Gupta', description: 'Comprehensive financial planning services.',
+              imgurl:VRG},
+              { title: 'Sanskar', description: 'Comprehensive financial planning services.',
+              imgurl:Sans},
             ].map((service, index) => (
               <Box
+              
                 key={index}
                 maxW="sm"
                 borderWidth="0px"
                 borderRadius="lg"
                 overflow="hidden"
                 borderColor={borderColor}
-                p={6}
+                p={4}
                 m={4}
                 textAlign="center"
                 boxShadow={shadowColor}
                 bg={cardBgColor}
+                style={{ width: "25%", maxHeight: "600px", display: "block" }}
               >
                 <Card maxW='sm'>
       <CardBody>
@@ -136,7 +159,6 @@ const HomePage = () => {
         </Container>
       </Box>
 
-
       {/* Call to Action Section */}
       <Box bg="#001d3c" color="white" py={20} id="About">
         <Container maxW="container.xl">
@@ -153,11 +175,11 @@ const HomePage = () => {
               </Button>
             </VStack>
             <Image
-              src="https://via.placeholder.com/400"
+              src={CImage}
               alt="Call to Action Image"
               borderRadius="lg"
               objectFit="cover"
-              maxW="400px"
+              style={{ maxWidth: "37%", height: "auto", display: "block" }}
             />
           </Stack>
         </Container>

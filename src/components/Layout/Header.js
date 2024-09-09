@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Image, Heading, Button, HStack, useBreakpointValue, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { Box, Flex, Image, Heading, Button, HStack, position, useBreakpointValue, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import HLogo from '../../assets/StrataBiz.png'
 import { SunIcon, MoonIcon } from '@chakra-ui/icons';
@@ -16,7 +16,10 @@ const Header = () => {
       display="flex"
       justifyContent="space-between" // Ensures space between logo and nav buttons
       alignItems="center"
-      width="100%">
+      as="header"
+      position="sticky"  // Makes it sticky
+      top="0"            // Sticks it to the top of the viewport
+      zIndex="1000" >
       <Box>
       <Link to="/">
         <Image 
