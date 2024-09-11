@@ -12,18 +12,20 @@ const EventSection = () => {
   };
 
   const textColor = useColorModeValue('#1a202c', '#f7f6f7'); // Text color
-  const tabPanelBgColor = useColorModeValue('#f7f6f7', '#002b5d'); // Tab Panel background color
+  const tabPanelBgColor = useColorModeValue('#e9dfe9', '#002b5d'); // Tab Panel background color
+  const sectionBgColor = useColorModeValue('#f7f6f7', '#001d3c'); // This is the background color for the whole section
+  const tabColor = useColorModeValue('#1a202c', '#f7f6f7');
   
   return (
-  <Box id="Event" p={4} bg='#001d3c'>
+  <Box id="Event" p={4}>
        <Container maxW="container.xl">
-      <Heading size="lg" mb={4} textAlign="center" color='#f7f6f7'>
+      <Heading size="lg" mb={4} textAlign="center" color={textColor}>
         Events
       </Heading>
       <Tabs variant="enclosed" isFitted index={tabIndex} onChange={handleTabChange}>
         <TabList>
-          <Tab color='#f7f6f7' bg='transparent'>Upcoming Events</Tab>
-          <Tab color='#f7f6f7' bg='transparent'>Past Events</Tab>
+          <Tab color={tabColor} bg='transparent'>Upcoming Events</Tab>
+          <Tab color={tabColor} bg='transparent'>Past Events</Tab>
         </TabList>
 
         <TabPanels>

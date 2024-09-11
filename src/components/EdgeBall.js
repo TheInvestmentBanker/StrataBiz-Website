@@ -35,7 +35,7 @@ const EdgeBall = memo(() => {
         bg={iconButtonBgColor}
         color={iconButtonColor}
         onClick={handleToggle}
-        zIndex={10}
+        zIndex="10"
         className="edge-ball"
         boxShadow={shadowColor}
       />
@@ -53,6 +53,7 @@ const EdgeBall = memo(() => {
           position="absolute"
           bottom="0"
           right="150px"
+          zIndex="10"
           onClick={() => scrollToBox('Home')}
         />
         <IconButton
@@ -66,6 +67,7 @@ const EdgeBall = memo(() => {
           position="absolute"
           bottom="57.39px"
           right="138.57px"
+          zIndex="10"
           onClick={() => scrollToBox('Profile')}
         />
         <IconButton
@@ -79,6 +81,7 @@ const EdgeBall = memo(() => {
           position="absolute"
           bottom="106.065px"
           right="106.065px"
+          zIndex="10"
           onClick={() => scrollToBox('Event')}
         />
         <IconButton
@@ -92,6 +95,7 @@ const EdgeBall = memo(() => {
           position="absolute"
           bottom="138.57px"
           right="57.39px"
+          zIndex="3"
           onClick={() => scrollToBox('Gallery')}
         />
         <IconButton
@@ -105,6 +109,7 @@ const EdgeBall = memo(() => {
           position="absolute"
           bottom="150px"
           right="0"
+          zIndex="3"
           onClick={() => scrollToBox('About')}
         />
       </Box>

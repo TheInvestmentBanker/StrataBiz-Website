@@ -12,25 +12,25 @@ import ModalComponent from './components/ModalComponent';
 import theme from './theme'; // Import the custom theme
 import EdgeBall from "./components/EdgeBall";
 import './App.css';
+import Gallery from './components/Gallery';
 
 function App() {
   return (
     <AuthProvider>
       <ChakraProvider theme={theme}>
+      
         <Router>
-          <Header position="sticky"/>
+        <Header/>
           <Box as="main" width="100%" minHeight="calc(100vh - 128px)" p={0}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
-              
             </Routes>
             <ModalComponent />
           </Box>
           <EdgeBall />
-          <Footer />
         </Router>
       </ChakraProvider>
     </AuthProvider>

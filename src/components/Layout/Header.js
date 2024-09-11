@@ -19,7 +19,7 @@ const Header = () => {
       as="header"
       position="sticky"  // Makes it sticky
       top="0"            // Sticks it to the top of the viewport
-      zIndex="1000" >
+      zIndex="10" >
       <Box>
       <Link to="/">
         <Image 
