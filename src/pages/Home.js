@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box, Button, ChakraProvider, Container, Flex, Heading, Image, Stack, Text, VStack } from '@chakra-ui/react';
+import { Box, Button, Center, ChakraProvider, Container, Flex, Heading, Image, Stack, Text, VStack, UnorderedList, ListItem } from '@chakra-ui/react';
 import {useColorModeValue, Card, CardBody, CardFooter,Tabs,TabList,TabPanels,Tab,TabPanel } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import YImage from '../assets/Exhibition.jpg';
-import CImage from '../assets/Call.jpg'
+import CImage from '../assets/12.jpg'
 import Header from '../components/Layout/Header'
 import Footer from '../components/Layout/Footer'
 import Gallery from '../components/Gallery';
@@ -35,9 +35,10 @@ const HomePage = () => {
   const textColor = useColorModeValue('#1a202c', '#f7f6f7');
   const buttonBgColor = useColorModeValue('#073669', '#0d548e');
   const buttonHoverColor = useColorModeValue('#001d3c', '#001d3c');
-  const cardBgColor = useColorModeValue('#ffffff', '#002b5d');
+  const cardBgColor = useColorModeValue('#f7f6f7', '#002b5d');
   const borderColor = useColorModeValue('#f7f6f7', '#001d3c');
   const shadowColor = useColorModeValue('md', 'dark-lg');
+  const animationColor = useColorModeValue('gray.300', '#395472')
 
   const backgroundImages = [B1, B2, B3, B4, B5, B6, B7, B8, B9, B10];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -67,9 +68,23 @@ const HomePage = () => {
   const inactiveTabBgColor = 'transparent';
                              // Text color when tab is active
 
+                             const positions = [
+                              { left: '55vw', top: '6vh', delay: '0s' },
+                              { left: '32vw', top: '48vh', delay: '2s' },
+                              { left: '36vw', top: '20vh', delay: '4s' },
+                              { left: '18vw', top: '64vh', delay: '6s' },
+                              { left: '22vw', top: '3vh', delay: '8s' },
+                              { left: '17vw', top: '61vh', delay: '10s' },
+                              { left: '97vw', top: '35vh', delay: '12s' },
+                              { left: '84vw', top: '57vh', delay: '14s' },
+                              { left: '79vw', top: '45vh', delay: '16s' },
+                              { left: '52vw', top: '18vh', delay: '18s' },
+                              // Add more items from your original list
+                            ];
+
   return (
     <ChakraProvider>
-<Box zIndex="2">
+<Box zIndex="1">
     <Box 
     bgImage={`url(${backgroundImages[currentImageIndex]})`} // Add your image here
       bgSize="cover"
@@ -103,7 +118,21 @@ const HomePage = () => {
       </Box>
 
   {/* Event Section */}
-  <Box id="Event" p={4} bg={sectionBgColor} zIndex="2" paddingBlockStart={75}>
+  <UnorderedList className="background" bg= {sectionBgColor} listStyleType="none" m="0" p="0" position="relative">
+      {Array(50).fill("").map((_, index) => (
+        <ListItem
+          key={index}
+          w="10px"
+          h="10px"
+          bg={animationColor}
+          display="inline-block"
+          m="2px"
+          borderRadius="50%"
+          animation="spin 2s linear infinite"
+        />
+      ))}
+    
+  <Box id="Event" p={4} bg={sectionBgColor} zIndex="0" paddingBlockStart={75}>
   <Container maxW="container.xl">
     <Heading size="lg" mb={4} textAlign="center" color={textColor}>
       Events
@@ -148,9 +177,9 @@ const HomePage = () => {
             <Heading size="md" color={textColor}>
               Online Workshop on AI Tools for Businesses
             </Heading>
-            <Text color={textColor}>Date: September 12, 2024</Text>
+            <Text color={textColor}>Date: To be announced</Text>
             <Text color={textColor}>
-              Join us for an insightful session where we explore how AI tools are transforming the landscape of businesses and freelancing...
+              An upcoming workshop on AI tools for Business and Branding will explore how artificial intelligence can enhance business strategies and elevate brand presence. Participants will learn to utilize AI-driven tools to optimize operations, improve marketing, and strengthen brand identity, gaining practical insights into the transformative power of AI in today’s business landscape.
             </Text>
           </Box>
           <Box 
@@ -161,17 +190,33 @@ const HomePage = () => {
             transition="0.4s ease-in-out"
           >
             <Heading size="md" color={textColor}>
-              Business Consulting Challenge (Engineer's Day)
+              Placement Talk (Supply Chain)
             </Heading>
-            <Text color={textColor}>Date: September 15, 2024</Text>
+            <Text color={textColor}>Date: To be announced</Text>
             <Text color={textColor}>
-              In this dynamic event, participants tackle real-world business challenges by developing strategic solutions...
+              Join us for an interactive session with a final-year senior who secured an internship at Flipkart as a Supply Chain Intern. She will guide NITJ students on supply chain roles, especially for non-core branches, discussing essential skills, networking, communication, and tips for career success.
             </Text>
           </Box>
         </TabPanel>
 
         {/* Past Events */}
         <TabPanel>
+        <Box 
+            className={`tab-content slide-right`} 
+            p={4} 
+            bg={tabPanelBgColor} 
+            borderRadius="md" 
+            mb={4}
+            transition="0.4s ease-in-out"
+          >
+            <Heading size="md" color={textColor}>
+              Consult Corp.
+            </Heading>
+            <Text color={textColor}>Date: September 20, 2024</Text>
+            <Text color={textColor}>
+              Consult Corp. emerged as a standout consulting competition, offering students the opportunity to tackle real-world business challenges through teamwork and critical thinking. It fostered an environment where participants showcased their problem-solving abilities, collaboration, and innovation, reinforcing its reputation as a premier platform for aspiring business leaders to develop and shine.
+            </Text>
+          </Box>
           <Box 
             className={`tab-content slide-right`} 
             p={4} 
@@ -179,38 +224,24 @@ const HomePage = () => {
             borderRadius="md" 
             mb={4} 
             transition="0.4s ease-in-out"
-          >
+          > 
             <Heading size="md" color={textColor}>
               Club Exhibition
             </Heading>
             <Text color={textColor}>Date: August 24, 2024</Text>
             <Text color={textColor}>
-              Our recent club exhibition, held at the Student Activity Centre, was a vibrant and engaging full-day event...
+              StrataBiz’s first interaction with the freshers took place at a lively exhibition held at the Student Activity Centre. Students showed great enthusiasm for the club’s vision and participated in an engaging quiz, earning fun rewards. The event successfully introduced the club's mission, sparking interest and excitement among the freshers.
             </Text>
           </Box>
-          <Box 
-            className={`tab-content slide-right`} 
-            p={4} 
-            bg={tabPanelBgColor} 
-            borderRadius="md" 
-            transition="0.4s ease-in-out"
-          >
-            <Heading size="md" color={textColor}>
-              Past Event 2
-            </Heading>
-            <Text color={textColor}>Date: July 20, 2024</Text>
-            <Text color={textColor}>
-              Description: An event focused on consulting and business analysis.
-            </Text>
-          </Box>
-        </TabPanel>
+          </TabPanel>
       </TabPanels>
     </Tabs>
   </Container>
 </Box>
-    
+</UnorderedList>
+
       {/* Services Section */}
-      <Box py={20} id="Service" bg={sectionBgColor}  zIndex="2">
+      <Box py={20} id="Service" bg={sectionBgColor}  zIndex="0">
         <Container maxW="container.xl">
           <Heading as="h2" size="xl" mb={10} textAlign="center" color={textColor}>
             Our Services
@@ -247,14 +278,40 @@ const HomePage = () => {
           </Flex>
         </Container>
       </Box>
-      <Box id="Gallery" paddingBlockStart={100} paddingBlockEnd={100} >
-      <Container maxW="container.xl">
-        <Gallery/>
-        </Container>
-      </Box>
+
+      {/* Gallery Section */}
+      <UnorderedList className="background" bg= {sectionBgColor} listStyleType="none" m="0" p="0" position="relative">
+      {Array(50).fill("").map((_, index) => (
+        <ListItem
+          key={index}
+          w="10px"
+          h="10px"
+          bg={animationColor}
+          display="inline-block"
+          m="2px"
+          zIndex={0}
+          animation="spin 2s linear infinite"
+        />
+      ))}
+      <Heading zIndex={1} id="Gallery" size="xl" textAlign="center" paddingBlockStart={20} color={textColor} bg={sectionBgColor} paddingBottom={10}>
+      Gallery
+    </Heading>
+      <Stack direction={{ base: 'column', md: 'row' }} spacing={8} align="center" justify="space-between">
+      <VStack align="start" spacing={6}>
+        <Gallery bg={sectionBgColor}/>
+        </VStack>
+        <VStack align="end" paddingLeft={18} paddingRight={20}>
+          <Text fontSize="xl" zIndex={1}>
+          With StrataBiz, each event becomes a unique station on our collective journey, one where challenges are met, ideas are born, and memories are made. From our very first interactions to the competitions and workshops that followed, every moment tells a story of growth, collaboration, and innovation.
+With every event, we not only shape the sphere of Business and Consulting in NIT Jalandhar but also strengthen the bonds within our community. The slideshow captures these fleeting moments, snapshots of energy, enthusiasm, and progress. On the other side lies the narrative of our journey, where each image speaks louder than words, reminding us of the passion and dedication that drives us forward.
+As we move ahead, this gallery stands as a living testament to our evolving story, a chronicle of where we've been and a glimpse into the promising future that awaits.
+          </Text>
+        </VStack>
+        </Stack>
+      </UnorderedList>
 
     {/* dobara banaya */}
-      <Box py={20} section id="Team" bg={sectionBgColor}  zIndex="2"> 
+      <Box py={20} section id="Team" bg={sectionBgColor}  zIndex="0"> 
         <Container maxW="container.xl">
         <Heading as="h2" size="xl" mb={10} textAlign="center" color={textColor}>
             Our Team
@@ -275,7 +332,7 @@ const HomePage = () => {
               imgurl:Sans},
             ].map((service, index) => (
               <Box
-                zIndex="2"
+                zIndex="0"
                 key={index}
                 maxW="sm"
                 borderWidth="0px"
@@ -319,7 +376,7 @@ const HomePage = () => {
         </Container>
       </Box>
       {/* Faculty Mentors */}
-      <Box py={20} section id="Team" bg={sectionBgColor}  zIndex="2"> 
+      <Box py={20} section id="Team" bg={sectionBgColor}  zIndex="0"> 
         <Container maxW="container.xl">
         <Heading as="h2" size="xl" mb={10} textAlign="center" color={textColor}>
             Our Faculty Mentors
@@ -334,7 +391,7 @@ const HomePage = () => {
               imgurl:Shveta},
             ].map((service, index) => (
               <Box
-                zIndex="2"
+                zIndex="0"
                 key={index}
                 maxW="sm"
                 borderWidth="0px"
@@ -379,7 +436,7 @@ const HomePage = () => {
         </Container>
       </Box>
       {/* Call to Action Section */}
-      <Box bg="#001d3c" color="white" py={20} id="About"  zIndex="2">
+      <Box bg="#001d3c" color="white" py={20} id="About"  zIndex="0">
         <Container maxW="container.xl">
           <Stack direction={{ base: 'column', md: 'row' }} spacing={8} align="center" justify="space-between">
             <VStack align="start" spacing={6}>

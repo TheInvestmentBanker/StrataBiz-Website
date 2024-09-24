@@ -53,7 +53,7 @@ const Header = () => {
             Sign In
           </Button>
           <Button color='#f7fafc' as={Link} to="/signup" size={isMobile ? 'sm' : 'md'} ml={4} _hover={{ bg: '#073669', color: 'white' }} bg="transparent">
-            Sign Up
+            Join Us
           </Button>
         </Flex>
     </Box>

@@ -8,15 +8,20 @@ import {
   Input,
   VStack,
   FormErrorMessage,
+  Checkbox,
+  Link,
+  Text
 } from '@chakra-ui/react';
 import { useColorMode, useColorModeValue, Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 
 const SignUp = () => {
   const { register } = useContext(AuthContext);
   const [name, setName] = useState('');
+  const [rollNo, setRollNo] = useState(''); // Added Roll No. state
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [courseName, setCourseName] = useState(''); // Added Complete Course Name state
+  const [batchNo, setBatchNo] = useState(''); // Added Batch No. state
+  const [isNITJStudent, setIsNITJStudent] = useState(true);
   const [error, setError] = useState('');
 
   const sectionBgColor = useColorModeValue('#f7f6f7', '#001d3c');
@@ -30,56 +35,92 @@ const SignUp = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
-      return;
-    }
     try {
-      await register({ name, email, password });
+      // Perform any actions on form submission, like making an API call
+      const studentType = isNITJStudent ? 'NITJ Student' : 'Outside NITJ Student';
+      const formData = {
+        name,
+        rollNo,
+        courseName,
+        batchNo,
+        studentType
+      };
+      console.log('Form Data:', formData);
     } catch (err) {
-      setError('Error during registration');
+      setError('Error submitting the form');
     }
   };
 
   return (
     <Box p={4} bg={sectionBgColor}>
       <VStack spacing={4} align="stretch">
-        <FormControl id="name" isInvalid={!!error}>
-          <FormLabel color={textColor}>Name</FormLabel>
-          <Input color={textColor}
+        <FormControl id="username" isInvalid={!!error}>
+          <FormLabel color={textColor}>Username</FormLabel>
+          <Input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </FormControl>
-        <FormControl id="email" isInvalid={!!error}>
-          <FormLabel color={textColor}>Email address</FormLabel>
-          <Input color={textColor}
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+        
+        <FormControl id="rollNo" isInvalid={!!error}>
+          <FormLabel color={textColor}>Roll No.</FormLabel> {/* Added Roll No input */}
+          <Input
+            type="text"
+            value={rollNo}
+            onChange={(e) => setRollNo(e.target.value)}
           />
         </FormControl>
-        <FormControl id="password" isInvalid={!!error}>
-          <FormLabel color={textColor}>Password</FormLabel>
-          <Input color={textColor}
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+
+        <FormControl id="courseName" isInvalid={!!error}>
+          <FormLabel color={textColor}>Complete Course Name</FormLabel> {/* Added Course Name input */}
+          <Input
+            type="text"
+            value={courseName}
+            onChange={(e) => setCourseName(e.target.value)}
           />
         </FormControl>
-        <FormControl id="confirm-password" isInvalid={!!error}>
-          <FormLabel color={textColor}>Confirm Password</FormLabel>
-          <Input color={textColor}
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+
+        <FormControl id="batchNo" isInvalid={!!error}>
+          <FormLabel color={textColor}>Batch No.</FormLabel> {/* Added Batch No input */}
+          <Input
+            type="text"
+            value={batchNo}
+            onChange={(e) => setBatchNo(e.target.value)}
           />
         </FormControl>
+
+        <Checkbox
+          isChecked={isNITJStudent}
+          onChange={(e) => setIsNITJStudent(e.target.checked)}
+          colorScheme="teal"
+          color={textColor}
+        >
+          NITJ Student {/* Checkbox for NITJ Student */}
+        </Checkbox>
+        
+        <Checkbox
+          isChecked={!isNITJStudent}
+          onChange={(e) => setIsNITJStudent(!e.target.checked)}
+          colorScheme="teal"
+          color={textColor}
+        >
+          Outside NITJ Student {/* Checkbox for Outside NITJ Student */}
+        </Checkbox>
+
         {error && <FormErrorMessage>{error}</FormErrorMessage>}
-        <Button colorScheme="teal" onClick={onSubmit}>
-          Sign Up
+
+        <Button colorScheme="teal" onClick={onSubmit} color='#1a202c'>
+          Join Now
         </Button>
+        <Box textAlign="center">
+          <Text color={textColor}>
+            Already an Admin?{' '}
+            <Link href="/signin" color={linkColor}>
+              Sign In
+            </Link>
+          </Text>
+        </Box>
       </VStack>
     </Box>
   );

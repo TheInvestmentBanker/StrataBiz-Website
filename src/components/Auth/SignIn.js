@@ -16,7 +16,7 @@ import { useColorMode, useColorModeValue, Card, CardHeader, CardBody, CardFooter
 
 const SignIn = () => {
   const { login } = useContext(AuthContext);
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);  // State to track "Login as Admin"
   const [error, setError] = useState('');
@@ -35,7 +35,7 @@ const SignIn = () => {
     e.preventDefault();
     try {
       // Pass the admin flag if needed
-      await login({ email, password, isAdmin });
+      await login({ username, password, isAdmin });
     } catch (err) {
       setError('Invalid login credentials');
     }
@@ -45,11 +45,11 @@ const SignIn = () => {
     <Box p={4}  bg={sectionBgColor}>
       <VStack spacing={4} align="stretch">
         <FormControl id="email" isInvalid={!!error}>
-          <FormLabel color={textColor}>Email address</FormLabel>
+          <FormLabel color={textColor}>Username</FormLabel>
           <Input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </FormControl>
         <FormControl id="password" isInvalid={!!error}>
@@ -75,9 +75,9 @@ const SignIn = () => {
         </Button>
         <Box textAlign="center">
           <Text color={textColor}>
-            New Here?{' '}
+            Not a Core Member?{' '}
             <Link href="/signup" color={linkColor}>
-              Sign up Now
+              Join Now
             </Link>
           </Text>
         </Box>

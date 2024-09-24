@@ -30,7 +30,7 @@ function App() {
             </Routes>
             <ModalComponent />
           </Box>
-          <EdgeBall />
+          <EdgeBall/>
         </Router>
       </ChakraProvider>
     </AuthProvider>

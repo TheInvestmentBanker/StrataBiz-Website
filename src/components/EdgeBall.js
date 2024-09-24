@@ -2,13 +2,16 @@ import React, { memo, useCallback, useState } from 'react';
 import { Box, IconButton, useDisclosure,  useBreakpointValue, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { FaHome, FaInfo, FaUser, FaCalendarAlt, FaImages, FaBars } from "react-icons/fa";
 import '../App.css'; // Import your CSS file
+import { useNavigate } from 'react-router-dom';
+
 
 const EdgeBall = memo(() => {
   const { isOpen, onToggle } = useDisclosure();
   const [open, setOpen] = useState(false);
   const { colorMode } = useColorMode();
+  const navigate = useNavigate();
 
-  const iconButtonBgColor = useColorModeValue('#003f92', '#f4eaf4' );
+  const iconButtonBgColor = useColorModeValue('#044590', '#f4eaf4' );
   const iconButtonColor = useColorModeValue('#f7f6f7', '#001d3c'); 
   const shadowColor = useColorModeValue('md', 'dark-lg');
 
@@ -68,7 +71,7 @@ const EdgeBall = memo(() => {
           bottom="57.39px"
           right="138.57px"
           zIndex="10"
-          onClick={() => scrollToBox('Profile')}
+          onClick={() => navigate('/SignUp')}
         />
         <IconButton
           aria-label="Events"
