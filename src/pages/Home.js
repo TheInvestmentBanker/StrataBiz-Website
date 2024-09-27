@@ -68,20 +68,6 @@ const HomePage = () => {
   const inactiveTabBgColor = 'transparent';
                              // Text color when tab is active
 
-                             const positions = [
-                              { left: '55vw', top: '6vh', delay: '0s' },
-                              { left: '32vw', top: '48vh', delay: '2s' },
-                              { left: '36vw', top: '20vh', delay: '4s' },
-                              { left: '18vw', top: '64vh', delay: '6s' },
-                              { left: '22vw', top: '3vh', delay: '8s' },
-                              { left: '17vw', top: '61vh', delay: '10s' },
-                              { left: '97vw', top: '35vh', delay: '12s' },
-                              { left: '84vw', top: '57vh', delay: '14s' },
-                              { left: '79vw', top: '45vh', delay: '16s' },
-                              { left: '52vw', top: '18vh', delay: '18s' },
-                              // Add more items from your original list
-                            ];
-
   return (
     <ChakraProvider>
 <Box zIndex="1">
@@ -118,7 +104,9 @@ const HomePage = () => {
       </Box>
 
   {/* Event Section */}
-  <UnorderedList className="background" bg= {sectionBgColor} listStyleType="none" m="0" p="0" position="relative">
+  
+  <Box id="Event" p={4} bg={sectionBgColor} zIndex="0" paddingBlockStart={75}>
+    <UnorderedList className="background" bg= {sectionBgColor} listStyleType="none" m="0" p="0" position="relative">
       {Array(50).fill("").map((_, index) => (
         <ListItem
           key={index}
@@ -131,8 +119,6 @@ const HomePage = () => {
           animation="spin 2s linear infinite"
         />
       ))}
-    
-  <Box id="Event" p={4} bg={sectionBgColor} zIndex="0" paddingBlockStart={75}>
   <Container maxW="container.xl">
     <Heading size="lg" mb={4} textAlign="center" color={textColor}>
       Events
@@ -194,7 +180,7 @@ const HomePage = () => {
             </Heading>
             <Text color={textColor}>Date: To be announced</Text>
             <Text color={textColor}>
-              Join us for an interactive session with a final-year senior who secured an internship at Flipkart as a Supply Chain Intern. She will guide NITJ students on supply chain roles, especially for non-core branches, discussing essential skills, networking, communication, and tips for career success.
+              Join us for an interactive session with a final-year senior who secured an internship at Flipkart as a Supply Chain Intern. They will guide NITJ students on supply chain roles, especially for non-core branches, discussing essential skills, networking, communication, and tips for career success.
             </Text>
           </Box>
         </TabPanel>
@@ -237,11 +223,12 @@ const HomePage = () => {
       </TabPanels>
     </Tabs>
   </Container>
+  </UnorderedList>
 </Box>
-</UnorderedList>
+
 
       {/* Services Section */}
-      <Box py={20} id="Service" bg={sectionBgColor}  zIndex="0">
+      <Box paddingBottom={20} id="Service" bg={sectionBgColor}  zIndex="0">
         <Container maxW="container.xl">
           <Heading as="h2" size="xl" mb={10} textAlign="center" color={textColor}>
             Our Services
@@ -444,7 +431,7 @@ As we move ahead, this gallery stands as a living testament to our evolving stor
                 Ready to Join Us?
               </Heading>
               <Text fontSize="lg">
-                Take the first step towards a brighter future. Become a member of our business consulting club today!
+                Take the first step towards a brighter future. Become a member of our Business Consulting Club today!
               </Text>
               <Button colorScheme="teal" size="lg" bg="white" color="teal.800" as={Link} to="/signup" ml={4} _hover={{ bg: 'gray.300' }}>
                 Join Now
