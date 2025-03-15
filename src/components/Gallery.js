@@ -1,4 +1,3 @@
-// Gallery.js
 import React, { useState, useEffect } from 'react';
 import { Box, Image, Button, Heading, Center, useColorModeValue } from '@chakra-ui/react';
 import img1 from '../assets/Gallery/1.jpg';
@@ -42,16 +41,28 @@ const Gallery = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="space-between" alignItems="center" p="0px">
-    <Box width="733.315px" height="550px" position="relative" overflow="hidden" boxShadow="lg" borderRadius="md">
-      <Image
-        src={images[currentIndex]}
-        alt={`slide-${currentIndex}`}
-        boxSize="600px"
-        width="800px"
-        objectFit="cover"
-        transition="all 0.5s ease-in-out"
-      />
+    <Box display="flex" justifyContent="center" alignItems="center" p="0px" position="relative">
+      <Box
+        width={{ base: '90%', md: '95%' }} // Set width to 90% on mobile and 35% on larger screens
+        height="auto"
+        maxWidth="800px" // Set maximum width to maintain 4:3 ratio
+        aspectRatio="4 / 3" // Maintain 4:3 aspect ratio
+        position="relative"
+        overflow="hidden"
+        boxShadow="lg"
+        borderRadius="24px"
+        paddingLeft={0}
+        bg={sectionBgColor} // Background color to match the section
+      >
+        <Image
+          src={images[currentIndex]}
+          alt={`slide-${currentIndex}`}
+          width="100%" // Ensures image takes full width of the container
+          height="100%" // Ensures image takes full height of the container
+          objectFit="cover" // Ensures the image covers the entire area
+          transition="all 0.5s ease-in-out"
+          borderRadius="md" // Adds rounded corners to the image
+        />
     </Box>
     </Box>
   );

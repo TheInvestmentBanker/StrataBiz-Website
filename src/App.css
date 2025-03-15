@@ -7,6 +7,25 @@
   pointer-events: none;
 }
 
+.container {
+  margin: 0 auto; /* Center horizontally */
+  padding: 0; /* Ensure no padding */
+}
+
+.scroll-container {
+  overflow-y: scroll; /* Enable vertical scroll */
+  height: 400px; /* Set height so the content can scroll */
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 0px; /* Hide the scrollbar (for Chrome, Safari, and other WebKit-based browsers) */
+}
+
+.scroll-container {
+  scrollbar-width: none; /* Hide scrollbar (for Firefox) */
+  -ms-overflow-style: none; /* Hide scrollbar (for Internet Explorer and Edge) */
+}
+
 @keyframes buttonExpand {
   0% {
     transform: scale(0);
@@ -29,6 +48,7 @@
     opacity: 1;
   }
 }
+
 @keyframes buttonCollapse {
   0% {
     transform: scale(1);
@@ -51,6 +71,7 @@
     opacity: 0;
   }
 }
+
 /* Keyframes for moving buttons out */
 @keyframes moveOut {
   0% {
@@ -66,6 +87,7 @@
     opacity: 1;
   }
 }
+
 @keyframes moveIn {
   0% {
     transform: scale(1) translate(-25px, -25px);
@@ -98,6 +120,17 @@
   transition: all 0.2s ease;
 }
 
+/* Responsive adjustments for .edge-ball */
+@media (max-width: 768px) {
+  .edge-ball {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 0.8rem;
+  }
+}
+
 .buttons-container {
   position: absolute;
   bottom: 0;
@@ -126,6 +159,19 @@
   transform: scale(0);
   position: absolute;
   transition: all 0.2s ease;
+}
+
+/* Responsive adjustments for .buttons-container and .button */
+@media (max-width: 768px) {
+  .buttons-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .button {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .buttons-container.expanded {
@@ -159,6 +205,7 @@
 .buttons-container.collapsed {
   opacity: 0;
 }
+
 .buttons-container.collapsed .button {
   animation: buttonCollapse 0.3s ease-in-out forwards;
 }
@@ -213,7 +260,6 @@
   }
 }
 
-
 @keyframes slideInFromLeft {
   0% {
     transform: translateX(-100px);
@@ -267,8 +313,8 @@
 
 .background {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   margin: 0;
@@ -286,7 +332,20 @@
 }
 
 .background li {
-  border-radius: 50%; /* Make all cubes circular */
+  border-radius: 50%; /* Make all circles */
+}
+
+/* Adjust sizes and animation timings for background circles */
+@media (max-width: 768px) {
+  .background li {
+    width: 15px !important;
+    height: 15px !important;
+  }
+  
+  /* Optionally reduce the number of background circles on smaller screens for performance */
+  .background li:nth-child(n+21) {
+    display: none;
+  }
 }
 
 .background li:nth-child(1) {
@@ -512,4 +571,128 @@
   bottom: -12px;
   animation-delay: 45s;
   animation-duration: 8s; /* Slower */
+}
+
+.page.card-2-example-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(45deg, #0cd2d1, #0857c0);
+  color: #fdfcfd;
+  font-family: "Euclid Circular A", "Poppins";
+}
+
+.card-2 {
+  display: flex;
+  align-items: center;
+  width: 75vw;
+  max-width: 650px;
+  padding: 50px 30px 50px 20px;
+  background: #121017;
+  border-radius: 24px;
+  box-shadow: 0 80px 60px rgb(0 0 0 / 12%);
+}
+
+.card-2 img {
+  max-width: 280px;
+  width: 32vw;
+  height: 300px;
+  object-fit: cover;
+  margin-left: -60px;
+  margin-right: 30px;
+  border-radius: inherit;
+  box-shadow: 0 60px 40px rgb(0 0 0 / 12%);
+  transition: border-radius 0.3s;
+}
+
+.card-2 h2 {
+  font-size: 26px;
+  font-weight: 400;
+  margin-top: 0;
+  margin-right: 30px;
+  margin-bottom: 6px;
+}
+
+.card-2 h3 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 12px;
+  opacity: 0.66;
+}
+
+.card-2 p {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 30px;
+  opacity: 0.42;
+}
+
+.card-2 .buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.card-2 button {
+  border: 1px solid #f8f8f8;
+  background: transparent;
+  color: #f8f8f8;
+  width: 40%;
+  min-width: 100px;
+  text-align: center;
+  font-family: inherit;
+  padding: 12px 26px;
+  font-size: 16px;
+  border-radius: 40px;
+}
+
+.card-2 button.primary {
+  background: #ffffff;
+  color: #121017;
+}
+
+@media (width <= 600px) {
+  .card-2 {
+    margin: 0 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 60px;
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .card-2 .buttons {
+    justify-content: center;
+  }
+
+  .card-2 .buttons button {
+    width: 50%;
+  }
+
+  .card-2 h2 {
+    margin-right: 0;
+    font-size: 26px;
+  }
+
+  .card-2 img {
+    margin: -100px 0 30px 0;
+    width: 100%;
+    max-width: 1000px;
+    height: 250px;
+  }
+
+  .card-2 p {
+    max-width: 400px;
+  }
+}
+
+@media (width <= 420px) {
+  .card-2 img {
+    height: 50vw;
+    width: 50vw;
+    border-radius: 50%;
+    margin: -140px 0 30px 0;
+  }
 }
